@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +13,9 @@ public class Main {
                         0. Salir
                         1. Sistema de recomendación de peliculas
                         2. Calculadora de Descuentos
+                        3. Sistema de Recomendación de Libros
+                        4. Calculadora de IMC con Recomendaciones
+                        5. Juego de Piedra, Papel o Tijera
                         """);
                 option = scanner.nextInt();
 
@@ -21,6 +25,15 @@ public class Main {
                         break;
                     case 2:
                         ejercicio2(scanner);
+                        break;
+                    case 3:
+                        ejercicio3(scanner);
+                        break;
+                    case 4:
+                        ejercicio4(scanner);
+                        break;
+                    case 5:
+                        ejercicio5(scanner);
                         break;
                     default:
                         System.out.println("Finalizando ejecucion");
@@ -162,6 +175,75 @@ ciencia ficción) y luego recomiende un libro basado en su elección.*/
         }
     }
     public static void ejercicio5(Scanner scanner){
+        System.out.println("Ejercicio 5: Juego de Piedra, Papel o Tijera");
+        /*Escribe un programa que pida al usuario que elija entre piedra, papel o tijera. Luego, el programa
+        elige una opción al azar y determina quién gana. Imprime el resultado del juego.
+        */
 
+        Random randomNum = new Random();
+        try{
+            int option = 0;
+            do {
+                System.out.println("""
+                    Escoja una opcion:
+                    1. Piedra
+                    2. Papel
+                    3. Tijera
+                    0. Salir
+                    """);
+                String[] opciones = {"Piedra", "Papel", "Tijeras"};
+                option = scanner.nextInt();
+                if(option < 0 || option > 3) throw new Exception("Opcion no valida");
+                if(option == 0) break;
+                int choose = randomNum.nextInt(3)+1;
+                System.out.println("Tu: "+opciones[option-1]+"\nMaquina: "+opciones[choose-1]);
+                //Si es igual
+                if(option == choose) System.out.println("Empate");
+                //Piedra - Papel
+                else if(option == 1 && choose == 2) System.out.println("Perdiste");
+                //Piedra - Tijera
+                else if(option == 1 && choose == 3) System.out.println("Ganaste");
+                //Papel - Piedra
+                else if(option == 2 && choose == 1) System.out.println("Ganaste");
+                //Papel - tijeras
+                else if(option == 2 && choose == 3) System.out.println("Perdiste");
+                //Tijeras - Piedra
+                else if(option == 3 && choose == 1) System.out.println("Perdiste");
+                //Tijeras - Papel
+                else if(option == 3 && choose == 2) System.out.println("Ganaste");
+            }while(option != 0);
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
+    public static void ejercicio6(Scanner scanner){
+        System.out.println("Ejercicio 6: Evaluador de Hábitos Saludables");
+        /*Escribe un programa que pida al usuario cuántas horas al día duerme, cuántas horas al día hace
+        ejercicio y cuántas comidas saludables consume al día. Luego, imprime una evaluación de sus
+        hábitos saludables basada en estos datos.*/
+
+        try{
+            System.out.print("");
+            int dormir = scanner.nextInt();
+            if(dormir <= 0 || dormir > 24) throw new Exception("Entrada invalida");
+            int ejercicio = scanner.nextInt();
+            if(ejercicio <= 0 || ejercicio > 24) throw new Exception("Entrada invalida");
+            int comidas = scanner.nextInt();
+            if(comidas <= 0) throw new Exception("Entrada invalida");
+
+            if(dormir < 7) System.out.println("Te faltan horas de sueño");
+            else if (dormir >= 7 && dormir <= 9) System.out.println("Horas de sueño correctas");
+            else System.out.println("Duermes mucho");
+
+            if(ejercicio < 2) System.out.println("Deberias realizar mas ejercicio");
+            else System.out.println("Tienes buena actividad fisica");
+
+            if(comidas < 7) System.out.println("Te faltan horas de sueño");
+            else if (dormir >= 7 && dormir <= 9) System.out.println("Horas de sueño correctas");
+            else System.out.println("Duermes mucho");
+
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
     }
 }
