@@ -16,6 +16,8 @@ public class Main {
                         3. Sistema de Recomendación de Libros
                         4. Calculadora de IMC con Recomendaciones
                         5. Juego de Piedra, Papel o Tijera
+                        6. Evaluador de Hábitos Saludables
+                        7. Sistema de Recomendación de Actividades
                         """);
                 option = scanner.nextInt();
 
@@ -34,6 +36,12 @@ public class Main {
                         break;
                     case 5:
                         ejercicio5(scanner);
+                        break;
+                    case 6:
+                        ejercicio6(scanner);
+                        break;
+                    case 7:
+                        ejercicio7(scanner);
                         break;
                     default:
                         System.out.println("Finalizando ejecucion");
@@ -153,7 +161,7 @@ ciencia ficción) y luego recomiende un libro basado en su elección.*/
         String[] estados = {"Bajo peso", "Peso normal", "Sobrepeso", "Obesidad"};
 
         try{
-            System.out.print("Escriba su altura: ");
+            System.out.print("Escriba su altura en metros: ");
             float altura = scanner.nextFloat();
             System.out.print("Escriba su peso en Kg: ");
             float peso = scanner.nextFloat();
@@ -223,11 +231,13 @@ ciencia ficción) y luego recomiende un libro basado en su elección.*/
         hábitos saludables basada en estos datos.*/
 
         try{
-            System.out.print("");
+            System.out.print("Cuantas horas duerme?: ");
             int dormir = scanner.nextInt();
             if(dormir <= 0 || dormir > 24) throw new Exception("Entrada invalida");
+            System.out.print("Cuantas horas hace ejercicio?: ");
             int ejercicio = scanner.nextInt();
             if(ejercicio <= 0 || ejercicio > 24) throw new Exception("Entrada invalida");
+            System.out.print("Cuantas comidas saludables come?: ");
             int comidas = scanner.nextInt();
             if(comidas <= 0) throw new Exception("Entrada invalida");
 
@@ -244,5 +254,32 @@ ciencia ficción) y luego recomiende un libro basado en su elección.*/
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
         }
+    }
+    public static void ejercicio7(Scanner scanner){
+        System.out.println("Ejercicio 7: Sistema de Recomendación de Actividades");
+        /*Escribe un programa que pida al usuario su estado de ánimo (feliz, triste, enérgico, relajado) y luego
+        recomiende una actividad basada en su estado de ánimo.*/
+
+        String[] actividad = {
+                "Feliz: Organiza una reunión con amigos o familiares para disfrutar de una comida o una tarde de juegos. Compartir momentos alegres con seres queridos puede aumentar tu felicidad.",
+                "Triste: Escribe en un diario sobre tus sentimientos. Expresar lo que sientes puede ayudarte a procesar la tristeza y encontrar claridad.",
+                "Enérgico: Realiza una sesión de ejercicio, como correr, bailar o practicar un deporte. La actividad física no solo canaliza tu energía, sino que también libera endorfinas que mejoran tu estado de ánimo.",
+                "Relajado: Dedica tiempo a meditar o practicar yoga. Estas actividades te ayudarán a mantener la calma y a disfrutar de un momento de paz interior."
+        };
+        try{
+            System.out.print("""
+                    Ingrese su estado de animo:
+                    1. Feliz
+                    2. Triste
+                    3. Energico
+                    4. Relajado
+                    """);
+            int option = scanner.nextInt();
+            if(option < 1 || option > 4) throw new Exception("Opcion no valida");
+            System.out.println(actividad[option-1]);
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+
     }
 }
