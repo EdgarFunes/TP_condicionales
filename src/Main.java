@@ -29,6 +29,7 @@ public class Main {
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
         }
+        scanner.close();
     }
     public static void ejercicio1(Scanner scanner){
         System.out.println("Ejercicio 1: Sistema de Recomendación de Películas");
@@ -117,8 +118,35 @@ public class Main {
         try{
             int option = scanner.nextInt();
             System.out.println("Su rutina: \n" + programas[option-1]);
+            if(option != 1 || option != 2 || option != 3) throw new Exception("Esa opcion no existe");
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
+        }
+    }
+    public static void ejercicio4(Scanner scanner){
+        System.out.println("Ejercicio 4: Generador de Listas de Reproducción");
+        /*Escribe un programa que pida al usuario su estado de ánimo (feliz, triste, enérgico, relajado) y luego
+        genere una lista de reproducción con canciones sugeridas para ese estado de ánimo.*/
+
+        String[] canciones = {
+                "Don't Stop Me Now - Queen / Happy - Pharrel Williams",
+                "Someone Like You - Adele / Yesterday - The Beatles",
+                "Can't Stop the Feeling! - Justin Timberlake / Run the World (Girls)  Beyoncé",
+                "Wonderwall - Oasis / Let It Be - The Beatles"
+        };
+        try{
+            System.out.println("""
+                    Seleccione su estado de animo:
+                    1. Feliz
+                    2. Triste
+                    3. Energic
+                    4. Relajado
+                    """);
+            int option = scanner.nextInt();
+            if(option < 1 || option > 4) throw new Exception("Entrada incorrecta");
+            System.out.println("Su playlist: \n" + canciones[option-1]);
+        }catch(Exception e){
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
