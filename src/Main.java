@@ -83,70 +83,85 @@ public class Main {
         }
     }
     public static void ejercicio3(Scanner scanner){
-        System.out.println("Ejercicio 3: Generador de Rutinas de Ejercicio");
-        /*Escribe un programa que pida al usuario su nivel de condición física (principiante, intermedio,
-        avanzado) y luego genere una rutina de ejercicio semanal con diferentes tipos de ejercicios y
-        duraciones.*/
+        System.out.println("Ejercicio 3: Sistema de Recomendación de Libros");
+        /*Escribe un programa que pida al usuario su género de libro favorito (fantasía, misterio, romance,
+ciencia ficción) y luego recomiende un libro basado en su elección.*/
 
         System.out.print("""
                 Seleccione su nivel de condicion fisica:
-                1. Principiante
-                2. Intermedio
-                3. Avanzado
+                1. Fantasia
+                2. Misterio
+                3. Romance
+                4. Ciencia ficcion
                 """);
-        String[] programas = {
+        String[] libros = {
                 """
-                Lunes - Sentadillas
-                Martes - Flexiones
-                Miercoles - Plancha
+                El señor de los anillos
+                Juego de Tronos
+                La biblioteca de la media noche de Katherine
                 """,
                 """
-                Lunes - Sentadillas, peso muerto
-                Martes - Press de banca, flexiones
-                Miercoles - Descanso o cardio
-                Jueves - Remo con barra, jalón al pecho
-                Viernes - Press militar, curl de biceps
+                Crimen y castigo de Fiodor Dostoievski
+                El Nombre de la Rosa de Umberto Eco
+                Perdida de Gilliam Flynn
                 """,
                 """
-                Lunes - Sentadilla profunda, peso muerto, convencional, lunges bulgaros
-                Martes - Press de banca inclinado, crucifijos con mancuernas, flexiones con peso
-                Miercoles - Descanso o cardio
-                Jueves - Remo con barra T, jalon al menton, dominadas
-                Viernes - Press militar detras del cuello, elevaciones frontales, curl de biceps
+                Orgullo y Prejuicio ed Jane Austen
+                Normal People de Sally Rooney
+                El Cuaderno de noah de Nicholas Sparks
+                """,
+                """
+                Dune de Frank Herbert
+                Neuromante de William Gibson
+                El Marciano de Andy Weir
                 """
         };
         try{
             int option = scanner.nextInt();
-            System.out.println("Su rutina: \n" + programas[option-1]);
-            if(option != 1 || option != 2 || option != 3) throw new Exception("Esa opcion no existe");
+            System.out.println("Su recomendacion: \n" + libros[option-1]);
+            if(option < 1 || option > 4) throw new Exception("Esa opcion no existe");
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
         }
     }
     public static void ejercicio4(Scanner scanner){
-        System.out.println("Ejercicio 4: Generador de Listas de Reproducción");
-        /*Escribe un programa que pida al usuario su estado de ánimo (feliz, triste, enérgico, relajado) y luego
-        genere una lista de reproducción con canciones sugeridas para ese estado de ánimo.*/
+        System.out.println("Ejercicio 4: Calculadora de IMC con Recomendaciones");
+        /*Escribe un programa que pida al usuario su peso en kilogramos y su altura en metros, y luego
+        calcule su Índice de Masa Corporal (IMC). Imprime una recomendación basada en el IMC (bajo
+        peso, peso normal, sobrepeso, obesidad).
+        */
 
-        String[] canciones = {
-                "Don't Stop Me Now - Queen / Happy - Pharrel Williams",
-                "Someone Like You - Adele / Yesterday - The Beatles",
-                "Can't Stop the Feeling! - Justin Timberlake / Run the World (Girls)  Beyoncé",
-                "Wonderwall - Oasis / Let It Be - The Beatles"
+        String[] recomendaciones = {
+                "Aumentar la ingesta calorica, especialmente de proteinas y grasas",
+                "Mantener una dieta equilibrada y variada",
+                "Reducir la ingesta calorica y aumentar el gastp energico a traves de la actividad fisica",
+                "Consultar a un nutricionista"
         };
+        String[] estados = {"Bajo peso", "Peso normal", "Sobrepeso", "Obesidad"};
+
         try{
-            System.out.println("""
-                    Seleccione su estado de animo:
-                    1. Feliz
-                    2. Triste
-                    3. Energic
-                    4. Relajado
-                    """);
-            int option = scanner.nextInt();
-            if(option < 1 || option > 4) throw new Exception("Entrada incorrecta");
-            System.out.println("Su playlist: \n" + canciones[option-1]);
+            System.out.print("Escriba su altura: ");
+            float altura = scanner.nextFloat();
+            System.out.print("Escriba su peso en Kg: ");
+            float peso = scanner.nextFloat();
+            if(altura < 0 || peso < 0) throw new Exception("Entrada incorrecta");
+            float IMC = peso / (float)(Math.pow(altura, 2));
+            if(IMC < 18.5f){
+                System.out.println("Su estado es: "+estados[0]+"\nRecomendacion: " + recomendaciones[0]);
+            }else if(IMC >= 18.5f && IMC <= 24.9f){
+                System.out.println("Su estado es: "+estados[1]+"\nRecomendacion: " + recomendaciones[1]);
+            }else if(IMC > 24.9f && IMC <= 29.9f){
+                System.out.println("Su estado es: "+estados[2]+"\nRecomendacion: " + recomendaciones[2]);
+            }else if(IMC > 29.9f){
+                System.out.println("Su estado es: "+estados[3]+"\nRecomendacion: " + recomendaciones[3]);
+            }else{
+                System.out.println("No corresponde a ninguna");
+            }
         }catch(Exception e){
             System.out.println("Error: " + e.getMessage());
         }
+    }
+    public static void ejercicio5(Scanner scanner){
+
     }
 }
