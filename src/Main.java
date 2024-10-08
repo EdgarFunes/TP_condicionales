@@ -81,5 +81,44 @@ public class Main {
             System.out.println("Error: "+e.getMessage());
         }
     }
+    public static void ejercicio3(Scanner scanner){
+        System.out.println("Ejercicio 3: Generador de Rutinas de Ejercicio");
+        /*Escribe un programa que pida al usuario su nivel de condición física (principiante, intermedio,
+        avanzado) y luego genere una rutina de ejercicio semanal con diferentes tipos de ejercicios y
+        duraciones.*/
 
+        System.out.print("""
+                Seleccione su nivel de condicion fisica:
+                1. Principiante
+                2. Intermedio
+                3. Avanzado
+                """);
+        String[] programas = {
+                """
+                Lunes - Sentadillas
+                Martes - Flexiones
+                Miercoles - Plancha
+                """,
+                """
+                Lunes - Sentadillas, peso muerto
+                Martes - Press de banca, flexiones
+                Miercoles - Descanso o cardio
+                Jueves - Remo con barra, jalón al pecho
+                Viernes - Press militar, curl de biceps
+                """,
+                """
+                Lunes - Sentadilla profunda, peso muerto, convencional, lunges bulgaros
+                Martes - Press de banca inclinado, crucifijos con mancuernas, flexiones con peso
+                Miercoles - Descanso o cardio
+                Jueves - Remo con barra T, jalon al menton, dominadas
+                Viernes - Press militar detras del cuello, elevaciones frontales, curl de biceps
+                """
+        };
+        try{
+            int option = scanner.nextInt();
+            System.out.println("Su rutina: \n" + programas[option-1]);
+        }catch(Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+    }
 }
