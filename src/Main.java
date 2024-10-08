@@ -238,9 +238,8 @@ ciencia ficción) y luego recomiende un libro basado en su elección.*/
             if(ejercicio < 2) System.out.println("Deberias realizar mas ejercicio");
             else System.out.println("Tienes buena actividad fisica");
 
-            if(comidas < 7) System.out.println("Te faltan horas de sueño");
-            else if (dormir >= 7 && dormir <= 9) System.out.println("Horas de sueño correctas");
-            else System.out.println("Duermes mucho");
+            if(comidas < 3) System.out.println("Deberias mejorar tu dieta");
+            else System.out.println("Tienes una buena alimentacion");
 
         }catch(Exception e){
             System.out.println("Error: "+e.getMessage());
